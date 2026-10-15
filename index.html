@@ -1,1 +1,306 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101827"><title>M8 Web Hub</title><link rel="manifest" href="manifest.webmanifest"><style>*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#eef2ff;font:16px system-ui,-apple-system,Arial}.wrap{max-width:860px;margin:auto;padding:26px 18px}header{display:flex;align-items:center;justify-content:space-between}small,.muted{color:#9ca9c4}.pill{background:#1d3440;color:#8af1c2;padding:7px 12px;border-radius:30px;font-size:12px}h1{font-size:32px;margin:32px 0 8px}h2{font-size:19px;margin:28px 0 14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:#172039;border:1px solid #293450;border-radius:17px;padding:18px}.card b{display:block;margin:9px 0}.card p{color:#a9b5cf;font-size:13px;line-height:1.5;margin:0}.emoji{font-size:26px}.wide{grid-column:1/-1}button{background:#608cff;border:0;border-radius:10px;color:white;padding:11px 15px;font-weight:700;cursor:pointer}button:focus-visible{outline:3px solid #fff}#results{line-height:1.8;white-space:pre-line;font-size:14px}footer{margin-top:30px;color:#8796b6;font-size:12px}@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}.wide{grid-column:span 3}}</style></head><body><main class="wrap"><header><strong>◈ M8 WEB HUB</strong><span class="pill">Versão 1.0</span></header><h1>Seu painel web.</h1><p class="muted">Uma experiência leve, feita para tablets e navegadores móveis.</p><h2>Explorar</h2><section class="grid"><article class="card"><span class="emoji">🏠</span><b>Início</b><p>Seu painel de acesso rápido.</p></article><article class="card"><span class="emoji">🔌</span><b>Integrações</b><p>Espaço reservado para APIs oficiais e autorizadas.</p></article><article class="card"><span class="emoji">🛡️</span><b>Privacidade</b><p>Sem coleta de senhas ou tokens de sessão.</p></article><article class="card wide"><span class="emoji">🧪</span><b>Diagnóstico do navegador</b><p>Verifique funcionalidades locais. O teste não identifica nem altera regras administrativas.</p><p style="margin:15px 0"><button id="test">Executar diagnóstico</button></p><div id="results" role="status" aria-live="polite">Aguardando teste.</div></article></section><footer>Este projeto não oferece acesso a serviços bloqueados pela organização. Use integrações somente quando autorizadas.</footer></main><script>document.querySelector('#test').addEventListener('click',()=>{let storage='Indisponível';try{localStorage.setItem('m8-test','ok');storage=localStorage.getItem('m8-test')==='ok'?'Disponível':'Indisponível';localStorage.removeItem('m8-test')}catch(e){}const results=['JavaScript: funcionando','Armazenamento local: '+storage,'Conexão informada pelo navegador: '+(navigator.onLine?'online':'offline'),'Service Worker: '+('serviceWorker' in navigator?'suportado':'não suportado'),'Tela: '+innerWidth+' × '+innerHeight];document.querySelector('#results').textContent=results.join('\n')});if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script></body></html>
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>M8 Web Hub 2.0</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1020;color:#eef2ff;font:16px system-ui,-apple-system,Arial}
+.wrap{max-width:900px;margin:auto;padding:26px 18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.muted,small{color:#a9b5cf}
+.pill{background:#1d3440;color:#8af1c2;padding:7px 12px;border-radius:30px;font-size:12px}
+h1{font-size:clamp(26px,6vw,36px);margin:32px 0 8px}
+h2{font-size:20px;margin:28px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:#172039;border:1px solid #293450;border-radius:17px;padding:18px;min-width:0}
+.card b{display:block;margin:9px 0}
+.card p{color:#a9b5cf;font-size:14px;line-height:1.5;margin:0 0 12px}
+.emoji{font-size:26px}
+.wide{grid-column:1/-1}
+button{background:#608cff;border:0;border-radius:10px;color:white;padding:11px 15px;font-weight:700;cursor:pointer;margin:4px 6px 4px 0}
+button.secondary{background:#303d5b}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,input:focus-visible{outline:3px solid #fff}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid #52627e;background:#0b1020;color:white;margin:7px 0 12px}
+label{font-weight:650;font-size:14px}
+#results,#spotify-status{line-height:1.7;white-space:pre-line;font-size:14px}
+ul{padding-left:22px;line-height:1.7}
+li{overflow-wrap:anywhere}
+footer{margin-top:30px;color:#8796b6;font-size:12px}
+a{color:#a9c2ff}
+.hidden{display:none}
+.profile{display:flex;gap:12px;align-items:center}
+.profile img{height:48px;width:48px;object-fit:cover;border-radius:50%}
+@media(min-width:650px){
+.grid{grid-template-columns:repeat(3,1fr)}
+.wide{grid-column:span 3}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header>
+<strong>◈ M8 WEB HUB</strong>
+<span class="pill">Versão 2.0</span>
+</header>
+<h1>Seu painel web.</h1>
+<p class="muted">Integrações oficiais e diagnóstico para tablets e navegadores móveis.</p>
+<h2>Explorar</h2>
+<section class="grid">
+<article class="card">
+<span class="emoji">🏠</span>
+<b>Início</b>
+<p>Painel de acesso rápido.</p>
+</article>
+<article class="card">
+<span class="emoji">🔌</span>
+<b>Integrações</b>
+<p>Conexões por APIs oficiais e autorizadas.</p>
+</article>
+<article class="card">
+<span class="emoji">🛡️</span>
+<b>Privacidade</b>
+<p>Sem armazenamento permanente de tokens. Autorização oficial via Spotify.</p>
+</article>
+<article class="card wide">
+<span class="emoji">🎵</span>
+<b>Spotify — Web API oficial</b>
+<p>Conecte sua própria conta para visualizar seu perfil e suas playlists. O login será aberto pelo Spotify e pode depender das permissões do dispositivo.</p>
+<div id="spotify-setup">
+<label for="client-id">Client ID do seu aplicativo Spotify</label>
+<input id="client-id" type="text" autocomplete="off" spellcheck="false" placeholder="Cole seu Client ID (32 caracteres hexadecimais)" maxlength="32">
+<button id="connect">Conectar Spotify</button>
+<p><small>O Client ID é público; não informe Client Secret. Redirect URI registrada: <code>https://m8-web-hub.vercel.app/callback</code>.</small></p>
+</div>
+<div id="spotify-connected" class="hidden">
+<div id="spotify-profile"></div>
+<h3>Minhas playlists</h3>
+<ul id="playlists"></ul>
+<button id="refresh" class="secondary">Atualizar playlists</button>
+<button id="disconnect" class="secondary">Desconectar</button>
+</div>
+<div id="spotify-status" role="status" aria-live="polite">Aguardando conexão.</div>
+</article>
+<article class="card wide">
+<span class="emoji">📷</span>
+<b>Instagram</b>
+<p>Integração oficial em preparação. A API da Meta possui requisitos próprios para contas profissionais. Nenhum login do Instagram é coletado por este site.</p>
+</article>
+<article class="card wide">
+<span class="emoji">🧪</span>
+<b>Diagnóstico do navegador</b>
+<p>Verifique funcionalidades locais. O teste não identifica nem altera regras administrativas.</p>
+<button id="test">Executar diagnóstico</button>
+<div id="results" role="status" aria-live="polite">Aguardando teste.</div>
+</article>
+</section>
+<footer>Este projeto não contorna bloqueios da organização. Integrações só funcionam quando o acesso é autorizado. Se o domínio de autenticação estiver bloqueado, solicite liberação ao administrador.</footer>
+</main>
+<script>
+(()=>{
+'use strict';
+const REDIRECT='https://m8-web-hub.vercel.app/callback';
+const SCOPES='user-read-private playlist-read-private';
+const $=s=>document.querySelector(s);
+const status=s=>{$('#spotify-status').textContent=s};
+const tokenKey='m8_spotify_access',expiryKey='m8_spotify_expiry';
+
+function base64url(bytes){
+return btoa(String.fromCharCode(...bytes)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')
+}
+function randomString(){
+return base64url(crypto.getRandomValues(new Uint8Array(48)))
+}
+async function sha256(s){
+return new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))
+}
+function getToken(){
+const expiry=Number(sessionStorage.getItem(expiryKey)||0);
+return Date.now()<expiry?sessionStorage.getItem(tokenKey):null
+}
+function setToken(data){
+sessionStorage.setItem(tokenKey,data.access_token);
+sessionStorage.setItem(expiryKey,String(Date.now()+Math.max(0,data.expires_in-60)*1000))
+}
+function clearAuth(){
+sessionStorage.removeItem(tokenKey);
+sessionStorage.removeItem(expiryKey);
+sessionStorage.removeItem('m8_spotify_verifier');
+sessionStorage.removeItem('m8_spotify_state')
+}
+function validId(s){
+return /^[a-f0-9]{32}$/i.test(s)
+}
+async function connect(){
+try{
+const clientId=$('#client-id').value.trim();
+if(!validId(clientId)){
+status('Informe um Client ID válido de 32 caracteres.');
+return
+}
+if(!crypto.subtle){
+status('Este navegador não oferece a criptografia necessária para PKCE.');
+return
+}
+const verifier=randomString(),state=randomString(),challenge=base64url(await sha256(verifier));
+sessionStorage.setItem('m8_spotify_verifier',verifier);
+sessionStorage.setItem('m8_spotify_state',state);
+sessionStorage.setItem('m8_spotify_client_id',clientId);
+const p=new URLSearchParams({
+response_type:'code',
+client_id:clientId,
+scope:SCOPES,
+redirect_uri:REDIRECT,
+state,
+code_challenge_method:'S256',
+code_challenge:challenge
+});
+location.assign('https://accounts.spotify.com/authorize?'+p)
+}catch(e){
+status('Não foi possível iniciar a autenticação: '+e.message)
+}
+}
+async function handleCallback(){
+const p=new URLSearchParams(location.search);
+if(!p.has('code')&&!p.has('error'))return;
+history.replaceState({},'', '/');
+if(p.has('error')){
+status('Autorização não concluída: '+p.get('error'));
+return
+}
+const state=sessionStorage.getItem('m8_spotify_state');
+const verifier=sessionStorage.getItem('m8_spotify_verifier');
+const clientId=sessionStorage.getItem('m8_spotify_client_id');
+if(!state||p.get('state')!==state||!verifier||!validId(clientId||'')){
+status('Estado de autenticação inválido ou sessão perdida. Tente conectar novamente neste mesmo navegador.');
+return
+}
+sessionStorage.removeItem('m8_spotify_state');
+sessionStorage.removeItem('m8_spotify_verifier');
+try{
+status('Concluindo autorização com o Spotify...');
+const body=new URLSearchParams({
+grant_type:'authorization_code',
+code:p.get('code'),
+redirect_uri:REDIRECT,
+client_id:clientId,
+code_verifier:verifier
+});
+const res=await fetch('https://accounts.spotify.com/api/token',{
+method:'POST',
+headers:{'Content-Type':'application/x-www-form-urlencoded'},
+body
+});
+const data=await res.json();
+if(!res.ok||!data.access_token){
+throw new Error(data.error_description||data.error||'Falha na autorização')
+}
+setToken(data);
+await loadSpotify()
+}catch(e){
+status('Não foi possível conectar: '+e.message)
+}
+}
+async function api(path){
+const token=getToken();
+if(!token)throw new Error('Sessão expirada. Conecte novamente.');
+const r=await fetch('https://api.spotify.com/v1'+path,{
+headers:{Authorization:'Bearer '+token}
+});
+if(!r.ok)throw new Error('Spotify API: HTTP '+r.status);
+return r.json()
+}
+async function loadSpotify(){
+if(!getToken()){
+status('Conecte sua conta para visualizar seus dados.');
+return
+}
+try{
+status('Carregando perfil e playlists...');
+const [me,lists]=await Promise.all([
+api('/me'),
+api('/me/playlists?limit=20')
+]);
+$('#spotify-setup').classList.add('hidden');
+$('#spotify-connected').classList.remove('hidden');
+const profile=$('#spotify-profile');
+profile.replaceChildren();
+const row=document.createElement('div');
+row.className='profile';
+if(me.images&&me.images[0]&&me.images[0].url){
+const img=document.createElement('img');
+img.src=me.images[0].url;
+img.alt='Foto do perfil';
+row.append(img)
+}
+const name=document.createElement('strong');
+name.textContent=me.display_name||me.id||'Conta Spotify';
+row.append(name);
+profile.append(row);
+const ul=$('#playlists');
+ul.replaceChildren();
+for(const item of (lists.items||[])){
+if(!item)continue;
+const li=document.createElement('li');
+if(item.external_urls&&item.external_urls.spotify){
+const a=document.createElement('a');
+a.href=item.external_urls.spotify;
+a.target='_blank';
+a.rel='noopener noreferrer';
+a.textContent=item.name;
+li.append(a)
+}else{
+li.textContent=item.name
+}
+ul.append(li)
+}
+if(!ul.children.length){
+const li=document.createElement('li');
+li.textContent='Nenhuma playlist disponível para esta conta.';
+ul.append(li)
+}
+status('Conectado com autorização oficial. Os links externos podem estar sujeitos às políticas do dispositivo.')
+}catch(e){
+status('Erro ao consultar Spotify: '+e.message+' — confira as permissões e a disponibilidade da API.')
+}
+}
+$('#connect').addEventListener('click',connect);
+$('#refresh').addEventListener('click',loadSpotify);
+$('#disconnect').addEventListener('click',()=>{
+clearAuth();
+$('#spotify-connected').classList.add('hidden');
+$('#spotify-setup').classList.remove('hidden');
+status('Sessão local encerrada. Para revogar o acesso do aplicativo, use as configurações da sua conta Spotify.')
+});
+$('#test').addEventListener('click',()=>{
+let storage='Indisponível';
+try{
+localStorage.setItem('m8-test','ok');
+storage=localStorage.getItem('m8-test')==='ok'?'Disponível':'Indisponível';
+localStorage.removeItem('m8-test')
+}catch(e){}
+$('#results').textContent=[
+'JavaScript: funcionando',
+'Armazenamento local: '+storage,
+'Conexão informada pelo navegador: '+(navigator.onLine?'online':'offline'),
+'Service Worker: '+('serviceWorker'in navigator?'suportado':'não suportado'),
+'Tela: '+innerWidth+' × '+innerHeight
+].join('\n')
+});
+if('serviceWorker'in navigator){
+window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}))
+}
+const returning=new URLSearchParams(location.search).has('code')||new URLSearchParams(location.search).has('error');
+handleCallback().then(()=>{
+if(!returning&&getToken())loadSpotify()
+});
+})();
+</script>
+</body>
+  </html>
+  
