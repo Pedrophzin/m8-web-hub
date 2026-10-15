@@ -1,57 +1,50 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101b40">
-<title>M8 Web Hub 3.0</title>
+<title>M8 Web Hub 3.1</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:#fff;background:linear-gradient(145deg,#080d23,#142b66,#080e26);min-height:100vh}
+body{margin:0;color:#fff;font:16px Arial,sans-serif;background:linear-gradient(145deg,#080d23,#15316c,#080d23);min-height:100vh}
 main{max-width:1050px;margin:auto;padding:20px 15px}
-header{text-align:center;padding:25px 0}
-header h1{font-size:clamp(30px,6vw,50px);margin:10px}
-header p,.card p{color:#d0dcf5;line-height:1.5}
-.tag{color:#85e8ff;font-weight:bold}
+header{text-align:center;padding:28px 0}
+h1{font-size:clamp(32px,6vw,52px);margin:12px 0}
+.tag{color:#91e9ff;font-weight:700}
+p,small{color:#d1def7;line-height:1.55}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.card{background:linear-gradient(135deg,#193b82,#172856);border:1px solid #4269b4;border-radius:22px;padding:22px;margin-bottom:16px;box-shadow:0 10px 25px #0003;min-width:0}
-.card h2{margin:10px 0}
+.card{background:linear-gradient(135deg,#1b4089,#142654);border:1px solid #5078bd;border-radius:22px;padding:22px;margin-bottom:16px;box-shadow:0 10px 25px #0003;min-width:0}
+.grid .card{margin:0}
 .emoji{font-size:34px}
-label{display:block;font-weight:bold;margin:15px 0 9px}
-input{width:100%;padding:15px;border-radius:12px;border:1px solid #6485c9;background:#10234f;color:#fff;font-size:16px}
-button{padding:14px 18px;border:0;border-radius:13px;color:#fff;font-weight:bold;font-size:14px;cursor:pointer;margin:8px 6px 5px 0}
-.primary{background:linear-gradient(90deg,#57aaff,#8beaff);color:#10234f}
-.secondary{background:#5373af}
+label{display:block;font-weight:bold;margin:16px 0 9px}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #7297db;background:#10224c;color:#fff;font-size:16px}
+input[type=range]{padding:0}
+button{border:0;border-radius:13px;padding:13px 17px;font-weight:700;cursor:pointer;margin:7px 5px 5px 0;color:white;background:#5377b8}
+button.primary{background:linear-gradient(90deg,#61b3ff,#a2f1ff);color:#10254b}
 button:disabled{opacity:.5}
-small{display:block;color:#c7d8f5;margin-top:12px;overflow-wrap:anywhere}
-.status{margin-top:15px;font-weight:bold;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere}
-.profile{margin-top:15px}
-.profile img{width:75px;height:75px;border-radius:50%;object-fit:cover}
-.profile h3{margin-bottom:5px}
-.track{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #ffffff20}
-.track img{width:54px;height:54px;object-fit:contain;border-radius:7px}
-.track .info{flex:1;min-width:0}
-.track strong,.track span{display:block;overflow-wrap:anywhere}
-.track span{font-size:13px;color:#cbd9f7;margin-top:4px}
-.track button{padding:10px;margin:0}
-.player{margin-top:16px;padding:15px;background:#0b1c45;border-radius:16px}
-.controls{text-align:center;margin:10px 0}
-.controls button{font-size:18px}
-#cover{width:145px;max-width:100%;display:none;border-radius:10px;margin:10px auto;object-fit:contain}
-#song,#artist{text-align:center;overflow-wrap:anywhere}
-#artist{color:#cbd9f7}
-#progress{width:100%}
+small{display:block;margin-top:10px;overflow-wrap:anywhere}
+.status{margin-top:15px;font-weight:bold;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
+.profile{margin:15px 0}
+.profile img{width:75px;height:75px;object-fit:cover;border-radius:50%}
+.player{margin-top:14px;background:#0c1d46;border-radius:16px;padding:16px;text-align:center}
+.player img{display:none;width:140px;height:140px;object-fit:cover;border-radius:10px;margin:auto}
 .time{display:flex;justify-content:space-between;font-size:12px;color:#cbd9f7}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;font-family:inherit}
-footer{text-align:center;color:#aebfdf;padding:24px;font-size:13px}
-a{color:#8beaff}
+.track{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #ffffff25}
+.track img{width:52px;height:52px;object-fit:cover;border-radius:8px}
+.track .info{flex:1;min-width:0;overflow-wrap:anywhere}
+.track span{display:block;color:#cbd9f7;font-size:13px;margin-top:4px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}
+footer{text-align:center;padding:22px;color:#c1cde4;font-size:13px}
+a{color:#99edff}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
 <main>
 <header>
-<div class="tag">M8 WEB HUB 3.0</div>
+<div class="tag">M8 WEB HUB 3.1</div>
 <h1>Seu painel web</h1>
 <p>Spotify, integrações e ferramentas do navegador.</p>
 </header>
@@ -78,38 +71,44 @@ a{color:#8beaff}
 <article class="card">
 <div class="emoji">🎵</div>
 <h2>Spotify — Web Player</h2>
-<p>Conecte sua conta Premium para pesquisar e ouvir músicas.</p>
+<p>Conecte sua conta para visualizar o perfil. Depois, autorize recursos adicionais de música.</p>
 
 <label for="clientId">Client ID do aplicativo Spotify</label>
 <input id="clientId" placeholder="Client ID de 32 caracteres" autocomplete="off">
 
-<button id="connect" class="primary">Conectar Spotify</button>
-<button id="logout" class="secondary">Desconectar</button>
+<button class="primary" id="connect">Conectar Spotify</button>
+<button id="logout">Desconectar</button>
 
 <small>Redirect URI: <span id="redirectUri"></span></small>
 <small>Use somente o Client ID, nunca o Client Secret.</small>
 
-<div id="spotifyStatus" class="status"></div>
+<div class="status" id="spotifyStatus" role="status"></div>
 <div id="profile" class="profile"></div>
 
 <div id="musicArea" hidden>
-<hr style="border:0;border-top:1px solid #ffffff30;margin:22px 0">
+<hr style="border:0;border-top:1px solid #ffffff30;margin:24px 0">
 
-<h2>🎧 Player</h2>
-<button id="activate" class="primary">Ativar player neste M8</button>
-<div id="playerStatus" class="status"></div>
+<h2>🎧 Músicas e playlists</h2>
+<p>Para pesquisar, acessar playlists e controlar a reprodução, o Spotify precisa autorizar permissões adicionais.</p>
+<button class="primary" id="musicPermission">Autorizar músicas e player</button>
+<div id="musicStatus" class="status"></div>
+
+<div id="musicTools" hidden>
+<button id="activate" class="primary">Ativar player neste dispositivo</button>
+<div class="status" id="playerStatus"></div>
 
 <div class="player">
 <img id="cover" alt="Capa do álbum">
 <h3 id="song">Nenhuma música selecionada</h3>
 <p id="artist"></p>
-<div class="controls">
-<button id="previous" class="secondary">⏮</button>
+<button id="previous">⏮</button>
 <button id="toggle" class="primary">▶ / ⏸</button>
-<button id="next" class="secondary">⏭</button>
-</div>
+<button id="next">⏭</button>
 <input id="progress" type="range" min="0" max="100" value="0">
-<div class="time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+<div class="time">
+<span id="currentTime">0:00</span>
+<span id="duration">0:00</span>
+</div>
 </div>
 
 <h2>🔎 Pesquisar músicas</h2>
@@ -118,9 +117,10 @@ a{color:#8beaff}
 <div id="searchResults"></div>
 
 <h2>📚 Minhas playlists</h2>
-<button id="playlistsBtn" class="secondary">Carregar playlists</button>
+<button id="playlistsBtn">Carregar playlists</button>
 <div id="playlists"></div>
 <div id="playlistTracks"></div>
+</div>
 </div>
 </article>
 
@@ -133,342 +133,591 @@ a{color:#8beaff}
 <article class="card">
 <div class="emoji">🧪</div>
 <h2>Diagnóstico do navegador</h2>
-<button id="test" class="primary">Executar diagnóstico</button>
+<button class="primary" id="test">Executar diagnóstico</button>
 <pre id="results"></pre>
 </article>
 
-<footer>Integrações oficiais. A disponibilidade depende dos serviços e das políticas do dispositivo.</footer>
+<footer>Uso de APIs oficiais. Reprodução sujeita às condições do Spotify e às políticas do dispositivo.</footer>
 </main>
 
 <script>
-"use strict";
+'use strict';
 
-const BASE="https://m8-web-hub.vercel.app";
-const REDIRECT=BASE+"/callback";
-const AUTH="https://accounts.spotify.com/authorize";
-const TOKEN="https://accounts.spotify.com/api/token";
-const API="https://api.spotify.com/v1";
-const SCOPE=[
-"user-read-private",
-"user-read-email",
-"streaming",
-"user-read-playback-state",
-"user-modify-playback-state",
-"user-read-currently-playing",
-"playlist-read-private"
-].join(" ");
+const REDIRECT='https://m8-web-hub.vercel.app/callback';
+const AUTH='https://accounts.spotify.com/authorize';
+const TOKEN='https://accounts.spotify.com/api/token';
+const API='https://api.spotify.com/v1';
 
+const PROFILE_SCOPE='user-read-private';
+const MUSIC_SCOPE='user-read-private streaming user-read-playback-state user-modify-playback-state user-read-currently-playing playlist-read-private';
+
+const KEY='m8hub31_';
 const $=id=>document.getElementById(id);
-const K={client:"m8_client_id",verifier:"m8_pkce_verifier",state:"m8_oauth_state",token:"m8_access_token",refresh:"m8_refresh_token",expiry:"m8_expiry"};
 
-let player=null,deviceId=null,connecting=false;
-let durationMs=0,positionMs=0,paused=true;
+let player=null;
+let deviceId=null;
+let durationMs=0;
+let authStarting=false;
 
-function status(t){$("spotifyStatus").textContent=t}
-function playerStatus(t){$("playerStatus").textContent=t}
-function get(k){return sessionStorage.getItem(K[k])}
-function put(k,v){sessionStorage.setItem(K[k],String(v))}
-function del(k){sessionStorage.removeItem(K[k])}
-function clearPending(){del("state");del("verifier")}
-function cleanUrl(){history.replaceState({}, "", "/")}
-function random(n){
-const b=new Uint8Array(n);
-crypto.getRandomValues(b);
-return Array.from(b,x=>("0"+x.toString(16)).slice(-2)).join("");
+const save=(name,value)=>sessionStorage.setItem(KEY+name,String(value));
+const read=name=>sessionStorage.getItem(KEY+name);
+const remove=name=>sessionStorage.removeItem(KEY+name);
+
+function status(t){$('spotifyStatus').textContent=t}
+function musicStatus(t){$('musicStatus').textContent=t}
+function playerStatus(t){$('playerStatus').textContent=t}
+
+function randomHex(n){
+const a=new Uint8Array(n);
+crypto.getRandomValues(a);
+return [...a].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
-function base64url(buffer){
-let s="";
-new Uint8Array(buffer).forEach(x=>s+=String.fromCharCode(x));
-return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+
+async function pkceChallenge(verifier){
+const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier));
+let s='';
+new Uint8Array(bytes).forEach(x=>s+=String.fromCharCode(x));
+return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
-async function challenge(v){
-return base64url(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v)));
+
+function pendingClear(){remove('pending')}
+function cleanUrl(){history.replaceState({},'', '/')}
+
+async function authorize(mode){
+if(authStarting)return;
+const id=$('clientId').value.trim();
+if(!/^[a-f0-9]{32}$/i.test(id)){
+status('Informe um Client ID válido.');
+return;
 }
-function saveToken(data){
-put("token",data.access_token);
-if(data.refresh_token)put("refresh",data.refresh_token);
-put("expiry",Date.now()+(data.expires_in||3600)*1000);
+if(!crypto.subtle){
+status('PKCE não disponível neste navegador.');
+return;
 }
-async function refreshToken(){
-const r=get("refresh"),id=get("client");
-if(!r||!id)throw Error("Sessão expirada. Conecte novamente.");
-const body=new URLSearchParams({grant_type:"refresh_token",refresh_token:r,client_id:id});
-const response=await fetch(TOKEN,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
-const data=await response.json();
-if(!response.ok)throw Error(data.error_description||data.error||"Falha ao renovar sessão.");
-saveToken(data);
-return get("token");
-}
-async function accessToken(){
-if(!get("token"))throw Error("Conecte sua conta primeiro.");
-if(Date.now()>=Number(get("expiry")||0)-60000)return refreshToken();
-return get("token");
-}
-async function connect(){
-if(connecting)return;
-const id=$("clientId").value.trim();
-if(!/^[a-f0-9]{32}$/i.test(id)){status("Informe um Client ID válido.");return}
-if(!crypto.subtle){status("Este navegador não suporta PKCE.");return}
-connecting=true;
-$("connect").disabled=true;
+authStarting=true;
 try{
-clearPending();
-const verifier=random(32),state=random(16);
-put("client",id);
-put("verifier",verifier);
-put("state",state);
+const verifier=randomHex(32);
+const state=randomHex(16);
+save('client',id);
+save('pending',JSON.stringify({
+verifier,state,mode,created:Date.now()
+}));
 const params=new URLSearchParams({
-client_id:id,response_type:"code",redirect_uri:REDIRECT,
-code_challenge_method:"S256",code_challenge:await challenge(verifier),
-state,scope:SCOPE
+client_id:id,
+response_type:'code',
+redirect_uri:REDIRECT,
+code_challenge_method:'S256',
+code_challenge:await pkceChallenge(verifier),
+state,
+scope:mode==='music'?MUSIC_SCOPE:PROFILE_SCOPE
 });
-status("Abrindo Spotify...");
-location.assign(AUTH+"?"+params);
+status(mode==='music'?'Solicitando permissões de música...':'Abrindo Spotify...');
+location.assign(AUTH+'?'+params.toString());
 }catch(e){
-clearPending();status("Erro: "+e.message);
-connecting=false;$("connect").disabled=false;
+pendingClear();
+authStarting=false;
+status('Erro ao iniciar: '+e.message);
 }
 }
+
+function tokenSave(data,mode){
+save('access',data.access_token);
+if(data.refresh_token)save('refresh',data.refresh_token);
+save('expires',Date.now()+(Number(data.expires_in)||3600)*1000);
+save('mode',mode);
+}
+
 async function callback(){
 const q=new URLSearchParams(location.search);
-const error=q.get("error"),code=q.get("code"),state=q.get("state");
-const expected=get("state"),verifier=get("verifier"),id=get("client");
+const code=q.get('code');
+const error=q.get('error');
+const state=q.get('state');
+
+let pending=null;
+try{
+pending=JSON.parse(read('pending')||'null');
+}catch(_){}
+
 cleanUrl();
-if(error){clearPending();status("Spotify recusou a autorização: "+error);return}
-if(!code){status("O Spotify não retornou código de autorização.");return}
-if(!expected||!verifier||!id){status("Sessão não encontrada. Inicie uma nova conexão.");return}
-if(state!==expected){clearPending();status("Verificação de segurança falhou. Inicie uma nova conexão.");return}
-clearPending();
+
+if(error){
+pendingClear();
+if(pending?.mode==='music'){
+status('Conexão básica preservada, se ainda válida.');
+musicStatus('Spotify recusou permissões de música: '+error);
+await restoreProfile();
+}else{
+status('Spotify recusou a autorização: '+error);
+}
+return;
+}
+
+if(!code){
+status('Retorno sem código do Spotify.');
+return;
+}
+
+if(!pending||!pending.verifier||!pending.state||!read('client')){
+status('Sessão de autorização não encontrada. Conecte novamente.');
+return;
+}
+
+if(Date.now()-pending.created>10*60*1000||state!==pending.state){
+pendingClear();
+status('Verificação de segurança falhou. Conecte novamente.');
+return;
+}
+
+pendingClear();
+
 try{
-status("Finalizando conexão...");
+status('Finalizando autorização...');
 const body=new URLSearchParams({
-grant_type:"authorization_code",code,redirect_uri:REDIRECT,
-client_id:id,code_verifier:verifier
+grant_type:'authorization_code',
+code,
+redirect_uri:REDIRECT,
+client_id:read('client'),
+code_verifier:pending.verifier
 });
+
 const response=await fetch(TOKEN,{
-method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body
+method:'POST',
+headers:{'Content-Type':'application/x-www-form-urlencoded'},
+body
 });
+
 const data=await response.json();
-if(!response.ok)throw Error(data.error_description||data.error||"Falha no login.");
-saveToken(data);
-await loadProfile();
-}catch(e){status("Falha na autenticação: "+e.message)}
-}
-async function request(path,options={}){
-const token=await accessToken();
-const response=await fetch(API+path,{
-...options,
-headers:{Authorization:"Bearer "+token,...(options.body?{"Content-Type":"application/json"}:{})}
-});
 if(!response.ok){
-let detail="";
-try{const j=await response.json();detail=j.error?.message||j.error||""}catch(_){}
-throw Error("Spotify HTTP "+response.status+(detail?": "+detail:""));
+throw Error(data.error_description||data.error||'Falha na troca de token');
 }
-if(response.status===204)return null;
-return response.json();
+
+tokenSave(data,pending.mode);
+await restoreProfile();
+
+}catch(e){
+status('Erro na autenticação: '+e.message);
 }
-async function loadProfile(){
+}
+
+async function refresh(){
+const refreshToken=read('refresh');
+const client=read('client');
+
+if(!refreshToken||!client){
+throw Error('Sessão expirada. Conecte novamente.');
+}
+
+const body=new URLSearchParams({
+grant_type:'refresh_token',
+refresh_token:refreshToken,
+client_id:client
+});
+
+const r=await fetch(TOKEN,{
+method:'POST',
+headers:{'Content-Type':'application/x-www-form-urlencoded'},
+body
+});
+
+const d=await r.json();
+
+if(!r.ok){
+throw Error(d.error_description||d.error||'Não foi possível renovar a sessão');
+}
+
+tokenSave(d,read('mode')||'profile');
+return read('access');
+}
+
+async function token(){
+if(!read('access'))throw Error('Conecte primeiro.');
+if(Date.now()>=Number(read('expires')||0)-60000){
+return refresh();
+}
+return read('access');
+}
+
+async function api(path,options={}){
+const headers={Authorization:'Bearer '+await token()};
+if(options.body)headers['Content-Type']='application/json';
+
+const r=await fetch(API+path,{
+...options,
+headers:{...headers,...options.headers}
+});
+
+if(!r.ok){
+let msg='';
 try{
-const p=await request("/me");
-const box=$("profile");
+const d=await r.json();
+msg=d.error?.message||d.error||'';
+}catch(_){}
+throw Error('HTTP '+r.status+(msg?': '+msg:''));
+}
+
+if(r.status===204)return null;
+return r.json();
+}
+
+async function restoreProfile(){
+if(!read('access'))return;
+
+try{
+const p=await api('/me');
+const box=$('profile');
 box.replaceChildren();
+
 if(p.images?.[0]?.url){
-const img=document.createElement("img");img.src=p.images[0].url;img.alt="Perfil";box.append(img);
+const img=document.createElement('img');
+img.src=p.images[0].url;
+img.alt='Foto de perfil';
+box.append(img);
 }
-const h=document.createElement("h3");h.textContent=p.display_name||"Usuário";box.append(h);
-const info=document.createElement("p");
-info.textContent="País: "+(p.country||"-")+" | Plano: "+(p.product||"-");
+
+const name=document.createElement('h3');
+name.textContent=p.display_name||'Usuário Spotify';
+box.append(name);
+
+const info=document.createElement('p');
+info.textContent='País: '+(p.country||'-')+' | Plano: '+(p.product||'-');
 box.append(info);
-$("musicArea").hidden=false;
-status("Spotify conectado com sucesso!");
+
+$('musicArea').hidden=false;
+status('Spotify conectado com sucesso!');
+
+if(read('mode')==='music'){
+enableMusic();
+}else{
+musicStatus('Perfil conectado. Autorize músicas e player para usar os recursos extras.');
+}
+
+}catch(e){
+status('Erro ao carregar perfil: '+e.message);
+}
+}
+
+function enableMusic(){
+$('musicTools').hidden=false;
+musicStatus('Permissões de música autorizadas.');
 loadSDK();
-}catch(e){status("Erro ao carregar perfil: "+e.message)}
 }
+
 function loadSDK(){
-if(window.Spotify){initPlayer();return}
-if(document.getElementById("spotify-sdk"))return;
-const script=document.createElement("script");
-script.id="spotify-sdk";
-script.src="https://sdk.scdn.co/spotify-player.js";
-script.onerror=()=>playerStatus("Não foi possível carregar o player. O navegador ou a rede pode estar bloqueando o SDK.");
-document.head.append(script);
+if(window.Spotify){
+initPlayer();
+return;
 }
+if($('sdkScript'))return;
+
+const s=document.createElement('script');
+s.id='sdkScript';
+s.src='https://sdk.scdn.co/spotify-player.js';
+s.onerror=()=>playerStatus('Não foi possível carregar o SDK neste navegador.');
+document.head.append(s);
+}
+
 window.onSpotifyWebPlaybackSDKReady=initPlayer;
+
 async function initPlayer(){
-if(player||!get("token"))return;
+if(player||!read('access')||!window.Spotify)return;
+
 player=new Spotify.Player({
-name:"M8 Web Hub",
+name:'M8 Web Hub',
 getOAuthToken:async cb=>{
-try{cb(await accessToken())}catch(e){playerStatus(e.message)}
+try{
+cb(await token());
+}catch(e){
+playerStatus(e.message);
+}
 },
 volume:0.7
 });
-player.addListener("ready",({device_id})=>{
+
+player.addListener('ready',({device_id})=>{
 deviceId=device_id;
-playerStatus("Player pronto. Toque em Ativar player neste M8.");
+playerStatus('Player pronto. Toque em Ativar player neste dispositivo.');
 });
-player.addListener("not_ready",()=>playerStatus("Player desconectado."));
-for(const event of ["initialization_error","authentication_error","account_error","playback_error"]){
-player.addListener(event,({message})=>playerStatus(event+": "+message));
+
+player.addListener('not_ready',()=>{
+deviceId=null;
+playerStatus('Player desconectado.');
+});
+
+for(const e of [
+'initialization_error',
+'authentication_error',
+'account_error',
+'playback_error'
+]){
+player.addListener(e,({message})=>playerStatus(e+': '+message));
 }
-player.addListener("autoplay_failed",()=>playerStatus("O navegador bloqueou a reprodução automática. Toque em ▶."));
-player.addListener("player_state_changed",updatePlayer);
+
+player.addListener('autoplay_failed',()=>{
+playerStatus('Reprodução automática bloqueada. Toque em ▶.');
+});
+
+player.addListener('player_state_changed',updatePlayer);
+
 try{
-const ok=await player.connect();
-if(!ok)playerStatus("Não foi possível iniciar o player neste navegador.");
-}catch(e){playerStatus("Erro no player: "+e.message)}
+if(!await player.connect()){
+playerStatus('O SDK não conseguiu conectar neste navegador.');
 }
-function formatTime(ms){
+}catch(e){
+playerStatus('Erro no SDK: '+e.message);
+}
+}
+
+function fmt(ms){
 const s=Math.floor((ms||0)/1000);
-return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
 }
+
 function updatePlayer(s){
 if(!s)return;
-paused=s.paused;
-positionMs=s.position;
-durationMs=s.duration;
+durationMs=s.duration||0;
 const t=s.track_window?.current_track;
+
 if(t){
-$("song").textContent=t.name;
-$("artist").textContent=t.artists?.map(a=>a.name).join(", ")||"";
+$('song').textContent=t.name;
+$('artist').textContent=t.artists?.map(a=>a.name).join(', ')||'';
 const image=t.album?.images?.[0]?.url;
-$("cover").style.display=image?"block":"none";
-if(image)$("cover").src=image;
+$('cover').style.display=image?'block':'none';
+if(image)$('cover').src=image;
 }
-$("toggle").textContent=paused?"▶":"⏸";
-$("progress").value=durationMs?Math.round(positionMs/durationMs*100):0;
-$("currentTime").textContent=formatTime(positionMs);
-$("duration").textContent=formatTime(durationMs);
+
+$('toggle').textContent=s.paused?'▶':'⏸';
+$('progress').value=durationMs?Math.round(s.position/durationMs*100):0;
+$('currentTime').textContent=fmt(s.position);
+$('duration').textContent=fmt(durationMs);
 }
+
 async function activate(){
-if(!player){playerStatus("O player ainda não está disponível.");return}
 try{
-await player.activateElement();
-if(!deviceId)throw Error("Dispositivo de reprodução ainda não disponível.");
-await request("/me/player",{method:"PUT",body:JSON.stringify({device_ids:[deviceId],play:false})});
-playerStatus("Player ativado. Escolha uma música.");
-}catch(e){playerStatus("Não foi possível ativar: "+e.message)}
+if(!player||!deviceId){
+throw Error('Player não disponível neste navegador.');
 }
+await player.activateElement();
+await api('/me/player',{
+method:'PUT',
+body:JSON.stringify({device_ids:[deviceId],play:false})
+});
+playerStatus('Player ativado. Escolha uma música.');
+}catch(e){
+playerStatus(e.message);
+}
+}
+
 async function playUri(uri,context=false){
 try{
-if(!deviceId)throw Error("Ative o player primeiro.");
+if(!deviceId)throw Error('Ative o player primeiro.');
 await player.activateElement();
-const body=context?{context_uri:uri}:{uris:[uri]};
-await request("/me/player/play?device_id="+encodeURIComponent(deviceId),{
-method:"PUT",body:JSON.stringify(body)
+
+await api('/me/player/play?device_id='+encodeURIComponent(deviceId),{
+method:'PUT',
+body:JSON.stringify(context?{context_uri:uri}:{uris:[uri]})
 });
-playerStatus("Reprodução solicitada.");
-}catch(e){playerStatus("Erro ao reproduzir: "+e.message)}
+
+playerStatus('Reprodução solicitada.');
+}catch(e){
+playerStatus(e.message);
 }
-function renderItems(container,items,type){
+}
+
+function render(container,items,type){
 container.replaceChildren();
-if(!items?.length){container.textContent="Nenhum resultado.";return}
-items.forEach(item=>{
-if(!item)return;
-const row=document.createElement("div");row.className="track";
+
+if(!items.length){
+container.textContent='Nenhum resultado.';
+return;
+}
+
+for(const item of items){
+if(!item)continue;
+
+const row=document.createElement('div');
+row.className='track';
+
 const image=item.album?.images?.[0]?.url||item.images?.[0]?.url;
+
 if(image){
-const img=document.createElement("img");img.src=image;img.alt="Capa";row.append(img);
+const img=document.createElement('img');
+img.src=image;
+img.alt='Capa';
+row.append(img);
 }
-const info=document.createElement("div");info.className="info";
-const title=document.createElement("strong");title.textContent=item.name||"Sem título";
-const sub=document.createElement("span");
-sub.textContent=type==="playlist"?(item.owner?.display_name||"Playlist"):(item.artists?.map(a=>a.name).join(", ")||"");
-info.append(title,sub);row.append(info);
-const btn=document.createElement("button");btn.className="primary";
-btn.textContent=type==="playlist"?"Abrir":"▶";
-btn.onclick=()=>type==="playlist"?openPlaylist(item):playUri(item.uri);
-row.append(btn);container.append(row);
-});
+
+const info=document.createElement('div');
+info.className='info';
+
+const title=document.createElement('strong');
+title.textContent=item.name||'Sem título';
+
+const sub=document.createElement('span');
+sub.textContent=type==='playlist'
+?(item.owner?.display_name||'Playlist')
+:(item.artists?.map(a=>a.name).join(', ')||'');
+
+info.append(title,sub);
+row.append(info);
+
+const b=document.createElement('button');
+b.className='primary';
+b.textContent=type==='playlist'?'Abrir':'▶';
+b.onclick=()=>type==='playlist'?openPlaylist(item):playUri(item.uri);
+
+row.append(b);
+container.append(row);
 }
-async function searchMusic(){
-const q=$("search").value.trim();
+}
+
+async function search(){
+const q=$('search').value.trim();
 if(!q)return;
-const box=$("searchResults");box.textContent="Pesquisando...";
+
+const box=$('searchResults');
+box.textContent='Pesquisando...';
+
 try{
-const data=await request("/search?type=track&limit=15&q="+encodeURIComponent(q));
-renderItems(box,data.tracks?.items||[],"track");
-}catch(e){box.textContent="Erro: "+e.message}
+const d=await api('/search?type=track&limit=15&q='+encodeURIComponent(q));
+render(box,d.tracks?.items||[],'track');
+}catch(e){
+box.textContent='Erro: '+e.message;
 }
-async function loadPlaylists(){
-const box=$("playlists");box.textContent="Carregando...";
+}
+
+async function playlists(){
+const box=$('playlists');
+box.textContent='Carregando...';
+
 try{
-const data=await request("/me/playlists?limit=30");
-renderItems(box,data.items||[],"playlist");
-}catch(e){box.textContent="Erro: "+e.message}
+const d=await api('/me/playlists?limit=30');
+render(box,d.items||[],'playlist');
+}catch(e){
+box.textContent='Erro: '+e.message;
 }
+}
+
 async function openPlaylist(p){
-const box=$("playlistTracks");box.replaceChildren();
-const h=document.createElement("h3");h.textContent=p.name;box.append(h);
-const btn=document.createElement("button");btn.className="primary";btn.textContent="▶ Reproduzir playlist";
-btn.onclick=()=>playUri(p.uri,true);box.append(btn);
-const list=document.createElement("div");list.textContent="Carregando músicas...";box.append(list);
+const box=$('playlistTracks');
+box.replaceChildren();
+
+const h=document.createElement('h3');
+h.textContent=p.name;
+box.append(h);
+
+const b=document.createElement('button');
+b.className='primary';
+b.textContent='▶ Reproduzir playlist';
+b.onclick=()=>playUri(p.uri,true);
+box.append(b);
+
+const list=document.createElement('div');
+list.textContent='Carregando...';
+box.append(list);
+
 try{
-const data=await request("/playlists/"+encodeURIComponent(p.id)+"/items?limit=50");
-const tracks=(data.items||[]).map(x=>x.item||x.track).filter(x=>x?.type==="track");
-renderItems(list,tracks,"track");
-}catch(e){list.textContent="Erro: "+e.message}
+const d=await api('/playlists/'+encodeURIComponent(p.id)+'/items?limit=50');
+render(
+list,
+(d.items||[]).map(x=>x.item||x.track).filter(x=>x?.type==='track'),
+'track'
+);
+}catch(e){
+list.textContent='Erro: '+e.message;
 }
-async function control(action){
+}
+
+async function control(which){
 try{
-if(!deviceId)throw Error("Ative o player primeiro.");
-if(action==="toggle"){
+if(!player)throw Error('Player indisponível.');
+
+if(which==='toggle'){
 await player.activateElement();
 await player.togglePlay();
-}else if(action==="next")await player.nextTrack();
-else await player.previousTrack();
-}catch(e){playerStatus(e.message)}
+}else if(which==='next'){
+await player.nextTrack();
+}else{
+await player.previousTrack();
 }
-function disconnect(){
-if(player){player.disconnect();player=null}
+}catch(e){
+playerStatus(e.message);
+}
+}
+
+function logout(){
+if(player){
+player.disconnect();
+player=null;
+}
 deviceId=null;
-Object.keys(K).forEach(del);
-$("clientId").value="";
-$("profile").replaceChildren();
-$("musicArea").hidden=true;
-$("searchResults").replaceChildren();
-$("playlists").replaceChildren();
-$("playlistTracks").replaceChildren();
-status("Desconectado.");
+
+Object.keys(sessionStorage)
+.filter(k=>k.startsWith(KEY))
+.forEach(k=>sessionStorage.removeItem(k));
+
+$('clientId').value='';
+$('profile').replaceChildren();
+$('musicArea').hidden=true;
+$('musicTools').hidden=true;
+status('Desconectado.');
 }
-function storageTest(storage){
-try{storage.setItem("m8_test","ok");const ok=storage.getItem("m8_test")==="ok";storage.removeItem("m8_test");return ok?"Disponível":"Indisponível"}catch(_){return"Indisponível"}
+
+function storageTest(s){
+try{
+s.setItem('m8_test','1');
+const ok=s.getItem('m8_test')==='1';
+s.removeItem('m8_test');
+return ok?'Disponível':'Indisponível';
+}catch(_){
+return 'Indisponível';
 }
+}
+
 function diagnostics(){
-$("results").textContent=[
-"JavaScript: funcionando",
-"Armazenamento local: "+storageTest(localStorage),
-"Armazenamento de sessão: "+storageTest(sessionStorage),
-"Conexão: "+(navigator.onLine?"online":"offline"),
-"Service Worker: "+("serviceWorker" in navigator?"suportado":"não suportado"),
-"Tela: "+innerWidth+" x "+innerHeight
-].join("\n");
+$('results').textContent=[
+'JavaScript: funcionando',
+'Armazenamento local: '+storageTest(localStorage),
+'Armazenamento de sessão: '+storageTest(sessionStorage),
+'Conexão: '+(navigator.onLine?'online':'offline'),
+'Service Worker: '+('serviceWorker'in navigator?'suportado':'não suportado'),
+'Tela: '+innerWidth+' x '+innerHeight
+].join('\n');
 }
 
-$("redirectUri").textContent=REDIRECT;
-$("connect").onclick=connect;
-$("logout").onclick=disconnect;
-$("activate").onclick=activate;
-$("searchBtn").onclick=searchMusic;
-$("search").addEventListener("keydown",e=>{if(e.key==="Enter")searchMusic()});
-$("playlistsBtn").onclick=loadPlaylists;
-$("toggle").onclick=()=>control("toggle");
-$("next").onclick=()=>control("next");
-$("previous").onclick=()=>control("previous");
-$("progress").onchange=async e=>{
-if(!player||!durationMs)return;
-try{await player.seek(Math.round(durationMs*Number(e.target.value)/100))}
-catch(err){playerStatus(err.message)}
-};
-$("test").onclick=diagnostics;
+$('redirectUri').textContent=REDIRECT;
+$('connect').onclick=()=>authorize('profile');
+$('musicPermission').onclick=()=>authorize('music');
+$('logout').onclick=logout;
+$('activate').onclick=activate;
+$('searchBtn').onclick=search;
+$('search').onkeydown=e=>{if(e.key==='Enter')search()};
+$('playlistsBtn').onclick=playlists;
+$('toggle').onclick=()=>control('toggle');
+$('next').onclick=()=>control('next');
+$('previous').onclick=()=>control('previous');
 
-if(get("client"))$("clientId").value=get("client");
-if(location.pathname==="/callback"){
+$('progress').onchange=async e=>{
+if(!player||!durationMs)return;
+try{
+await player.seek(Math.round(durationMs*Number(e.target.value)/100));
+}catch(err){
+playerStatus(err.message);
+}
+};
+
+$('test').onclick=diagnostics;
+
+if(read('client'))$('clientId').value=read('client');
+
+if(
+location.pathname==='/callback'&&
+(location.search.includes('code=')||location.search.includes('error='))
+){
 callback();
-}else if(get("token")){
-loadProfile();
+}else if(read('access')){
+restoreProfile();
 }
 </script>
 </body>
-</html>
+  </html>
+  
