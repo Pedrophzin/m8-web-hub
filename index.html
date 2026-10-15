@@ -5,31 +5,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b1020">
-  <title>M8 Web Hub 2.2</title>
-
+  <title>M8 Web Hub 2.3</title>
   <style>
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       background: #0b1020;
       color: #eef2ff;
       font-family: system-ui, Arial, sans-serif;
     }
-
     .wrap {
       max-width: 860px;
       margin: auto;
       padding: 24px 18px;
     }
-
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
-
     .pill {
       background: #1d3440;
       color: #8af1c2;
@@ -37,27 +32,17 @@
       border-radius: 30px;
       font-size: 12px;
     }
-
     h1 {
       font-size: clamp(27px, 6vw, 36px);
       margin: 32px 0 10px;
     }
-
-    h2 {
-      font-size: 20px;
-      margin: 28px 0 14px;
-    }
-
-    .muted, .card p {
-      color: #a9b5cf;
-    }
-
+    h2 { font-size: 20px; margin: 20px 0 14px; }
+    .muted, .card p { color: #a9b5cf; }
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
-
     .card {
       background: #172039;
       border: 1px solid #293450;
@@ -65,25 +50,10 @@
       padding: 18px;
       min-width: 0;
     }
-
-    .card b {
-      display: block;
-      margin: 10px 0;
-    }
-
-    .card p {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .wide {
-      grid-column: 1 / -1;
-    }
-
-    .emoji {
-      font-size: 27px;
-    }
-
+    .card b { display: block; margin: 10px 0; }
+    .card p { font-size: 14px; line-height: 1.6; }
+    .wide { grid-column: 1 / -1; }
+    .emoji { font-size: 27px; }
     input {
       width: 100%;
       padding: 14px;
@@ -94,7 +64,6 @@
       font-size: 15px;
       margin: 10px 0;
     }
-
     button {
       background: #608cff;
       border: none;
@@ -105,81 +74,51 @@
       cursor: pointer;
       margin: 5px 5px 5px 0;
     }
-
-    button.secondary {
-      background: #33415f;
-    }
-
-    button:disabled {
-      opacity: .55;
-      cursor: not-allowed;
-    }
-
+    button.secondary { background: #33415f; }
+    button:disabled { opacity: .55; }
     .status {
       margin-top: 15px;
       overflow-wrap: anywhere;
       white-space: pre-line;
       line-height: 1.6;
     }
-
     .profile {
       margin-top: 15px;
       line-height: 1.7;
       overflow-wrap: anywhere;
     }
-
     .profile img {
       width: 72px;
       height: 72px;
       border-radius: 50%;
       object-fit: cover;
     }
-
-    .playlist {
-      padding: 12px;
-      margin: 8px 0;
-      background: #101827;
-      border-radius: 10px;
-    }
-
-    .playlist a {
-      color: #91b4ff;
-    }
-
     footer {
       margin-top: 30px;
       color: #8796b6;
       font-size: 12px;
       line-height: 1.6;
     }
-
     @media (min-width: 650px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .grid { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
-
 <body>
 <main class="wrap">
-
   <header>
     <strong>◈ M8 WEB HUB</strong>
-    <span class="pill">Versão 2.2</span>
+    <span class="pill">Versão 2.3</span>
   </header>
 
   <h1>Seu painel web.</h1>
-
   <p class="muted">
     Integrações oficiais e diagnóstico para tablets
     e navegadores móveis.
   </p>
 
   <h2>Explorar</h2>
-
   <section class="grid">
-
     <article class="card">
       <span class="emoji">🏠</span>
       <b>Início</b>
@@ -195,20 +134,13 @@
     <article class="card">
       <span class="emoji">🛡️</span>
       <b>Privacidade</b>
-      <p>
-        Login oficial. Tokens mantidos apenas
-        durante a sessão atual.
-      </p>
+      <p>Login oficial. Tokens mantidos somente na sessão.</p>
     </article>
 
     <article class="card wide">
       <span class="emoji">🎵</span>
       <h2>Spotify — Web API oficial</h2>
-
-      <p>
-        Conecte sua conta Spotify para visualizar
-        seu perfil.
-      </p>
+      <p>Conecte sua conta para visualizar seu perfil.</p>
 
       <label for="clientId">
         <strong>Client ID do aplicativo Spotify</strong>
@@ -223,10 +155,7 @@
         placeholder="Cole o Client ID de 32 caracteres"
       >
 
-      <button id="connect">
-        Conectar Spotify
-      </button>
-
+      <button id="connect">Conectar Spotify</button>
       <button id="logout" class="secondary">
         Desconectar
       </button>
@@ -235,7 +164,6 @@
         Redirect URI:
         https://m8-web-hub.vercel.app/callback
       </p>
-
       <p class="muted">
         Use somente o Client ID.
         Nunca coloque o Client Secret neste site.
@@ -244,10 +172,7 @@
       <div id="spotifyStatus" class="status" role="status">
         Aguardando conexão.
       </div>
-
       <div id="profile" class="profile"></div>
-
-      <div id="playlists"></div>
     </article>
 
     <article class="card wide">
@@ -255,33 +180,25 @@
       <h2>Instagram</h2>
       <p>
         Integração oficial em preparação.
-        Nenhum login do Instagram é coletado
-        por este site.
+        Nenhum login do Instagram é coletado.
       </p>
     </article>
 
     <article class="card wide">
       <span class="emoji">🧪</span>
       <h2>Diagnóstico do navegador</h2>
-
-      <button id="test">
-        Executar diagnóstico
-      </button>
-
+      <button id="test">Executar diagnóstico</button>
       <div id="results" class="status">
         Aguardando teste.
       </div>
     </article>
-
   </section>
 
   <footer>
     Este projeto utiliza integrações oficiais.
     A disponibilidade depende das permissões
-    concedidas pelo serviço e das políticas
-    do dispositivo.
+    dos serviços e das políticas do dispositivo.
   </footer>
-
 </main>
 
 <script>
@@ -289,15 +206,11 @@
 
 const REDIRECT_URI =
   "https://m8-web-hub.vercel.app/callback";
-
 const AUTH_URL =
   "https://accounts.spotify.com/authorize";
-
 const TOKEN_URL =
   "https://accounts.spotify.com/api/token";
-
-const API_URL =
-  "https://api.spotify.com/v1";
+const API_URL = "https://api.spotify.com/v1";
 
 const CLIENT_KEY = "m8_client_id";
 const VERIFIER_KEY = "m8_pkce_verifier";
@@ -315,23 +228,19 @@ function randomString(length) {
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
     "abcdefghijklmnopqrstuvwxyz" +
     "0123456789-._~";
-
   const bytes = new Uint8Array(length);
   crypto.getRandomValues(bytes);
-
-  return Array.from(bytes, b =>
-    chars[b % chars.length]
+  return Array.from(
+    bytes,
+    b => chars[b % chars.length]
   ).join("");
 }
 
 function base64url(buffer) {
-  const bytes = new Uint8Array(buffer);
   let binary = "";
-
-  bytes.forEach(b => {
+  new Uint8Array(buffer).forEach(b => {
     binary += String.fromCharCode(b);
   });
-
   return btoa(binary)
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
@@ -340,13 +249,15 @@ function base64url(buffer) {
 
 async function createChallenge(verifier) {
   const data = new TextEncoder().encode(verifier);
-
   const digest = await crypto.subtle.digest(
-    "SHA-256",
-    data
+    "SHA-256", data
   );
-
   return base64url(digest);
+}
+
+function clearOAuth() {
+  sessionStorage.removeItem(VERIFIER_KEY);
+  sessionStorage.removeItem(STATE_KEY);
 }
 
 async function connectSpotify() {
@@ -375,17 +286,15 @@ async function connectSpotify() {
       client_id: clientId,
       response_type: "code",
       redirect_uri: REDIRECT_URI,
-code_challenge_method: "S256",
-code_challenge: challenge,
-state: state
-});
+      code_challenge_method: "S256",
+      code_challenge: challenge,
+      state: state
+    });
 
     setStatus("Abrindo autorização do Spotify...");
-
     window.location.assign(
       AUTH_URL + "?" + params.toString()
     );
-
   } catch (error) {
     setStatus(
       "Erro ao iniciar conexão: " + error.message
@@ -403,44 +312,46 @@ async function handleCallback() {
   const state = params.get("state");
 
   if (error) {
+    clearOAuth();
     setStatus(
       "Autorização recusada pelo Spotify: " + error
     );
-
-    history.replaceState(
-      {},
-      "",
-      window.location.pathname
-    );
-
+    history.replaceState({}, "", "/");
     return;
   }
 
-  if (!code) return;
+  if (!code) {
+    setStatus("Nenhum código de autorização recebido.");
+    return;
+  }
 
   const expectedState =
     sessionStorage.getItem(STATE_KEY);
-
   const verifier =
     sessionStorage.getItem(VERIFIER_KEY);
-
   const clientId =
     sessionStorage.getItem(CLIENT_KEY);
 
-  if (
-    !expectedState ||
-    state !== expectedState ||
-    !verifier ||
-    !clientId
-  ) {
+  if (!expectedState || !verifier || !clientId) {
     setStatus(
-      "Sessão de autenticação inválida. " +
-      "Inicie a conexão novamente."
+      "O navegador perdeu os dados da sessão OAuth. " +
+      "Abra o site e conclua o login na mesma aba. " +
+      "Se o erro persistir, verifique se o navegador " +
+      "mantém o armazenamento durante redirecionamentos."
     );
+    history.replaceState({}, "", "/");
     return;
   }
 
-  sessionStorage.removeItem(STATE_KEY);
+  if (state !== expectedState) {
+    clearOAuth();
+    setStatus(
+      "A verificação de segurança falhou. " +
+      "Inicie uma nova conexão."
+    );
+    history.replaceState({}, "", "/");
+    return;
+  }
 
   try {
     setStatus("Finalizando autenticação...");
@@ -473,21 +384,16 @@ async function handleCallback() {
     }
 
     sessionStorage.setItem(
-      TOKEN_KEY,
-      data.access_token
+      TOKEN_KEY, data.access_token
     );
 
-    sessionStorage.removeItem(VERIFIER_KEY);
-
-    history.replaceState(
-      {},
-      "",
-      "/"
-    );
-
+    clearOAuth();
+    history.replaceState({}, "", "/");
     await loadProfile();
 
   } catch (error) {
+    clearOAuth();
+    history.replaceState({}, "", "/");
     setStatus(
       "Falha na autenticação: " + error.message
     );
@@ -495,25 +401,19 @@ async function handleCallback() {
 }
 
 async function spotifyRequest(path) {
-  const token =
-    sessionStorage.getItem(TOKEN_KEY);
-
+  const token = sessionStorage.getItem(TOKEN_KEY);
   if (!token) {
     throw new Error("Conta não conectada.");
   }
 
-  const response = await fetch(
-    API_URL + path,
-    {
-      headers: {
-        Authorization: "Bearer " + token
-      }
+  const response = await fetch(API_URL + path, {
+    headers: {
+      Authorization: "Bearer " + token
     }
-  );
+  });
 
   if (!response.ok) {
     let detail = "";
-
     try {
       const data = await response.json();
       detail = data.error?.message || "";
@@ -523,6 +423,120 @@ async function spotifyRequest(path) {
       "Spotify API HTTP " +
       response.status +
       (detail ? ": " + detail : "")
+    );
+  }
+
+  return response.json();
+}
+
+async function loadProfile() {
+  try {
+    setStatus("Carregando perfil...");
+
+    const profile = await spotifyRequest("/me");
+    const container = $("profile");
+    container.replaceChildren();
+
+    if (profile.images?.length) {
+      const img = document.createElement("img");
+      img.src = profile.images[0].url;
+      img.alt = "Foto do perfil Spotify";
+      container.appendChild(img);
+    }
+
+    const name = document.createElement("h3");
+    name.textContent =
+      profile.display_name || "Usuário Spotify";
+    container.appendChild(name);
+
+    const country = document.createElement("p");
+    country.textContent =
+      "País: " + (profile.country || "Não informado");
+    container.appendChild(country);
+
+    const plan = document.createElement("p");
+    plan.textContent =
+      "Plano: " + (profile.product || "Não informado");
+    container.appendChild(plan);
+
+    setStatus("Spotify conectado com sucesso!");
+  } catch (error) {
+    setStatus(
+      "Erro ao carregar dados: " + error.message
+    );
+  }
+}
+
+function disconnectSpotify() {
+  sessionStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(CLIENT_KEY);
+  clearOAuth();
+  $("clientId").value = "";
+  $("profile").replaceChildren();
+  setStatus("Sessão local encerrada.");
+}
+
+function runDiagnostics() {
+  let storage = "Indisponível";
+
+  try {
+    localStorage.setItem("m8_test", "ok");
+    if (localStorage.getItem("m8_test") === "ok") {
+      storage = "Disponível";
+    }
+    localStorage.removeItem("m8_test");
+  } catch (_) {}
+
+  let session = "Indisponível";
+  try {
+    sessionStorage.setItem("m8_session_test", "ok");
+    if (
+      sessionStorage.getItem("m8_session_test") === "ok"
+    ) {
+      session = "Disponível";
+    }
+    sessionStorage.removeItem("m8_session_test");
+  } catch (_) {}
+
+  $("results").textContent = [
+    "JavaScript: funcionando",
+    "Armazenamento local: " + storage,
+    "Armazenamento de sessão: " + session,
+    "Conexão: " +
+      (navigator.onLine ? "online" : "offline"),
+    "Service Worker: " +
+      ("serviceWorker" in navigator
+        ? "suportado" : "não suportado"),
+    "Tela: " + innerWidth + " × " + innerHeight
+  ].join("\n");
+}
+
+$("connect").addEventListener(
+  "click", connectSpotify
+);
+$("logout").addEventListener(
+  "click", disconnectSpotify
+);
+$("test").addEventListener(
+  "click", runDiagnostics
+);
+
+const savedClientId =
+  sessionStorage.getItem(CLIENT_KEY);
+
+if (savedClientId) {
+  $("clientId").value = savedClientId;
+}
+
+if (window.location.pathname === "/callback") {
+  handleCallback();
+} else if (sessionStorage.getItem(TOKEN_KEY)) {
+  loadProfile();
+}
+</script>
+</body>
+</html>
+(detail ? ": " + detail : "")
     );
   }
 
