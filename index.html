@@ -2,315 +2,666 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1020">
-<title>M8 Web Hub 2.1</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b1020;color:#eef2ff;font:16px system-ui,Arial}
-.wrap{max-width:860px;margin:auto;padding:24px 18px}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.pill{background:#1d3440;color:#8af1c2;padding:8px 12px;border-radius:25px;font-size:12px}
-h1{font-size:clamp(27px,6vw,36px);margin:32px 0 8px}
-h2{font-size:20px;margin:28px 0 14px}
-.muted,.card p{color:#a9b5cf}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{background:#172039;border:1px solid #293450;border-radius:17px;padding:18px;min-width:0}
-.card b{display:block;margin:10px 0}
-.card p{font-size:14px;line-height:1.6}
-.emoji{font-size:27px}
-.wide{grid-column:1/-1}
-input{width:100%;background:#101827;border:1px solid #43516e;color:white;border-radius:10px;padding:14px;font-size:15px;margin:8px 0 14px}
-button{background:#608cff;color:white;border:0;border-radius:10px;padding:12px 17px;font-weight:700;cursor:pointer}
-button.secondary{background:#33415f}
-button:disabled{opacity:.55}
-button:focus-visible,input:focus-visible{outline:2px solid #a6bdff}
-.status{margin-top:15px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.7}
-.playlist{padding:12px;margin:9px 0;border:1px solid #35415d;border-radius:10px}
-.playlist a{color:#a6c0ff}
-footer{margin-top:30px;color:#8796b6;font-size:12px;line-height:1.6}
-@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>M8 Web Hub 2.2</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #0b1020;
+      color: #eef2ff;
+      font-family: system-ui, Arial, sans-serif;
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: auto;
+      padding: 24px 18px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .pill {
+      background: #1d3440;
+      color: #8af1c2;
+      padding: 8px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: clamp(27px, 6vw, 36px);
+      margin: 32px 0 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 28px 0 14px;
+    }
+
+    .muted, .card p {
+      color: #a9b5cf;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: #172039;
+      border: 1px solid #293450;
+      border-radius: 17px;
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .card b {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .emoji {
+      font-size: 27px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      background: #101827;
+      border: 1px solid #455475;
+      border-radius: 10px;
+      color: white;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    button {
+      background: #608cff;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      padding: 13px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      margin: 5px 5px 5px 0;
+    }
+
+    button.secondary {
+      background: #33415f;
+    }
+
+    button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 15px;
+      overflow-wrap: anywhere;
+      white-space: pre-line;
+      line-height: 1.6;
+    }
+
+    .profile {
+      margin-top: 15px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .profile img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .playlist {
+      padding: 12px;
+      margin: 8px 0;
+      background: #101827;
+      border-radius: 10px;
+    }
+
+    .playlist a {
+      color: #91b4ff;
+    }
+
+    footer {
+      margin-top: 30px;
+      color: #8796b6;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 650px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body>
 <main class="wrap">
-<header>
-<strong>◈ M8 WEB HUB</strong>
-<span class="pill">Versão 2.1</span>
-</header>
 
-<h1>Seu painel web.</h1>
-<p class="muted">Integrações oficiais para tablets e navegadores móveis.</p>
+  <header>
+    <strong>◈ M8 WEB HUB</strong>
+    <span class="pill">Versão 2.2</span>
+  </header>
 
-<h2>Explorar</h2>
-<section class="grid">
-<article class="card">
-<span class="emoji">🏠</span>
-<b>Início</b>
-<p>Painel de acesso rápido.</p>
-</article>
-<article class="card">
-<span class="emoji">🔌</span>
-<b>Integrações</b>
-<p>Conexões por APIs oficiais e autorizadas.</p>
-</article>
-<article class="card">
-<span class="emoji">🛡️</span>
-<b>Privacidade</b>
-<p>Login oficial e tokens mantidos apenas na sessão atual.</p>
-</article>
+  <h1>Seu painel web.</h1>
 
-<article class="card wide">
-<span class="emoji">🎵</span>
-<b>Spotify — Web API oficial</b>
-<p>Conecte sua conta para visualizar seu perfil e suas playlists.</p>
+  <p class="muted">
+    Integrações oficiais e diagnóstico para tablets
+    e navegadores móveis.
+  </p>
 
-<label for="clientId"><strong>Client ID do aplicativo Spotify</strong></label>
-<input id="clientId" placeholder="Cole o Client ID de 32 caracteres" autocomplete="off" spellcheck="false">
+  <h2>Explorar</h2>
 
-<button id="connect">Conectar Spotify</button>
-<button id="disconnect" class="secondary" hidden>Desconectar</button>
+  <section class="grid">
 
-<p>Redirect URI:
-<code>https://m8-web-hub.vercel.app/callback</code></p>
-<p>Use somente o Client ID. Nunca coloque o Client Secret neste site.</p>
+    <article class="card">
+      <span class="emoji">🏠</span>
+      <b>Início</b>
+      <p>Painel de acesso rápido.</p>
+    </article>
 
-<div id="spotifyStatus" class="status" role="status" aria-live="polite">Aguardando conexão.</div>
-<div id="profile"></div>
-<div id="playlists"></div>
-</article>
+    <article class="card">
+      <span class="emoji">🔌</span>
+      <b>Integrações</b>
+      <p>Conexões por APIs oficiais e autorizadas.</p>
+    </article>
 
-<article class="card wide">
-<span class="emoji">📷</span>
-<b>Instagram</b>
-<p>Integração oficial da Meta em preparação. Será necessário configurar um aplicativo e as permissões apropriadas.</p>
-</article>
+    <article class="card">
+      <span class="emoji">🛡️</span>
+      <b>Privacidade</b>
+      <p>
+        Login oficial. Tokens mantidos apenas
+        durante a sessão atual.
+      </p>
+    </article>
 
-<article class="card wide">
-<span class="emoji">🧪</span>
-<b>Diagnóstico do navegador</b>
-<p>Verifique funcionalidades locais sem modificar políticas administrativas.</p>
-<button id="test">Executar diagnóstico</button>
-<div id="results" class="status">Aguardando teste.</div>
-</article>
-</section>
+    <article class="card wide">
+      <span class="emoji">🎵</span>
+      <h2>Spotify — Web API oficial</h2>
 
-<footer>Este projeto utiliza APIs oficiais e não contorna restrições administrativas. O login depende das permissões do dispositivo e das plataformas.</footer>
+      <p>
+        Conecte sua conta Spotify para visualizar
+        seu perfil.
+      </p>
+
+      <label for="clientId">
+        <strong>Client ID do aplicativo Spotify</strong>
+      </label>
+
+      <input
+        id="clientId"
+        type="text"
+        maxlength="32"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Cole o Client ID de 32 caracteres"
+      >
+
+      <button id="connect">
+        Conectar Spotify
+      </button>
+
+      <button id="logout" class="secondary">
+        Desconectar
+      </button>
+
+      <p class="muted">
+        Redirect URI:
+        https://m8-web-hub.vercel.app/callback
+      </p>
+
+      <p class="muted">
+        Use somente o Client ID.
+        Nunca coloque o Client Secret neste site.
+      </p>
+
+      <div id="spotifyStatus" class="status" role="status">
+        Aguardando conexão.
+      </div>
+
+      <div id="profile" class="profile"></div>
+
+      <div id="playlists"></div>
+    </article>
+
+    <article class="card wide">
+      <span class="emoji">📷</span>
+      <h2>Instagram</h2>
+      <p>
+        Integração oficial em preparação.
+        Nenhum login do Instagram é coletado
+        por este site.
+      </p>
+    </article>
+
+    <article class="card wide">
+      <span class="emoji">🧪</span>
+      <h2>Diagnóstico do navegador</h2>
+
+      <button id="test">
+        Executar diagnóstico
+      </button>
+
+      <div id="results" class="status">
+        Aguardando teste.
+      </div>
+    </article>
+
+  </section>
+
+  <footer>
+    Este projeto utiliza integrações oficiais.
+    A disponibilidade depende das permissões
+    concedidas pelo serviço e das políticas
+    do dispositivo.
+  </footer>
+
 </main>
 
 <script>
 "use strict";
 
-const REDIRECT_URI = "https://m8-web-hub.vercel.app/callback";
-const AUTH_URL = "https://accounts.spotify.com/authorize";
-const TOKEN_URL = "https://accounts.spotify.com/api/token";
-const SCOPES = "user-read-private user-read-email playlist-read-private";
-const KEY = "m8_spotify_pkce";
-const TOKEN_KEY = "m8_spotify_token";
+const REDIRECT_URI =
+  "https://m8-web-hub.vercel.app/callback";
+
+const AUTH_URL =
+  "https://accounts.spotify.com/authorize";
+
+const TOKEN_URL =
+  "https://accounts.spotify.com/api/token";
+
+const API_URL =
+  "https://api.spotify.com/v1";
+
+const CLIENT_KEY = "m8_client_id";
+const VERIFIER_KEY = "m8_pkce_verifier";
+const STATE_KEY = "m8_oauth_state";
+const TOKEN_KEY = "m8_access_token";
 
 const $ = id => document.getElementById(id);
-const status = message => $("spotifyStatus").textContent = message;
+
+function setStatus(message) {
+  $("spotifyStatus").textContent = message;
+}
 
 function randomString(length) {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    "abcdefghijklmnopqrstuvwxyz" +
+    "0123456789-._~";
+
   const bytes = new Uint8Array(length);
   crypto.getRandomValues(bytes);
-  return Array.from(bytes, b => chars[b % chars.length]).join("");
+
+  return Array.from(bytes, b =>
+    chars[b % chars.length]
+  ).join("");
 }
 
 function base64url(buffer) {
   const bytes = new Uint8Array(buffer);
   let binary = "";
-  for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+
+  bytes.forEach(b => {
+    binary += String.fromCharCode(b);
+  });
+
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
 }
 
 async function createChallenge(verifier) {
-  const bytes = new TextEncoder().encode(verifier);
-  const digest = await crypto.subtle.digest("SHA-256",bytes);
+  const data = new TextEncoder().encode(verifier);
+
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    data
+  );
+
   return base64url(digest);
 }
 
-function getClientId() {
-  return $("clientId").value.trim();
-}
-
 async function connectSpotify() {
-  try {
-    const clientId = getClientId();
-    if (!/^[a-fA-F0-9]{32}$/.test(clientId)) {
-      status("Informe um Client ID válido de 32 caracteres.");
-      return;
-    }
-    if (!crypto.subtle || !crypto.getRandomValues) {
-      status("Este navegador não oferece os recursos de segurança necessários.");
-      return;
-    }
+  const clientId = $("clientId").value.trim();
 
-    const verifier = randomString(96);
+  if (!/^[a-f0-9]{32}$/i.test(clientId)) {
+    setStatus("Informe um Client ID válido.");
+    return;
+  }
+
+  if (!crypto.subtle) {
+    setStatus("Este navegador não suporta PKCE.");
+    return;
+  }
+
+  try {
+    const verifier = randomString(64);
     const challenge = await createChallenge(verifier);
     const state = randomString(32);
 
-    sessionStorage.setItem(KEY,JSON.stringify({
-      verifier,
-      state,
-      clientId,
-      createdAt:Date.now()
-    }));
+    sessionStorage.setItem(CLIENT_KEY, clientId);
+    sessionStorage.setItem(VERIFIER_KEY, verifier);
+    sessionStorage.setItem(STATE_KEY, state);
 
     const params = new URLSearchParams({
-      client_id:clientId,
-      response_type:"code",
-      redirect_uri:REDIRECT_URI,
-      code_challenge_method:"S256",
-      code_challenge:challenge,
-      state,
-      scope:SCOPES
+      client_id: clientId,
+      response_type: "code",
+      redirect_uri: REDIRECT_URI,
+      code_challenge_method: "S256",
+      code_challenge: challenge,
+      state: state,
+      scope: "user-read-private"
     });
 
-    status("Abrindo autorização oficial do Spotify...");
-    window.location.assign(AUTH_URL+"?"+params.toString());
-  } catch(error) {
-    status("Erro ao iniciar autorização: "+error.message);
+    setStatus("Abrindo autorização do Spotify...");
+
+    window.location.assign(
+      AUTH_URL + "?" + params.toString()
+    );
+
+  } catch (error) {
+    setStatus(
+      "Erro ao iniciar conexão: " + error.message
+    );
   }
 }
 
 async function handleCallback() {
-  const params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(
+    window.location.search
+  );
+
+  const error = params.get("error");
   const code = params.get("code");
-  const returnedState = params.get("state");
-  const authError = params.get("error");
+  const state = params.get("state");
 
-  if (!code && !authError) return;
+  if (error) {
+    setStatus(
+      "Autorização recusada pelo Spotify: " + error
+    );
 
-  history.replaceState(null,"",location.pathname);
+    history.replaceState(
+      {},
+      "",
+      window.location.pathname
+    );
 
-  if (authError) {
-    status("Autorização cancelada ou recusada: "+authError);
-    sessionStorage.removeItem(KEY);
     return;
   }
 
-  const savedRaw = sessionStorage.getItem(KEY);
-  if (!savedRaw) {
-    status("Sessão de autorização perdida. Volte ao início e conecte novamente, sem trocar de navegador.");
+  if (!code) return;
+
+  const expectedState =
+    sessionStorage.getItem(STATE_KEY);
+
+  const verifier =
+    sessionStorage.getItem(VERIFIER_KEY);
+
+  const clientId =
+    sessionStorage.getItem(CLIENT_KEY);
+
+  if (
+    !expectedState ||
+    state !== expectedState ||
+    !verifier ||
+    !clientId
+  ) {
+    setStatus(
+      "Sessão de autenticação inválida. " +
+      "Inicie a conexão novamente."
+    );
     return;
   }
 
-  let saved;
+  sessionStorage.removeItem(STATE_KEY);
+
   try {
-    saved = JSON.parse(savedRaw);
-  } catch {
-    sessionStorage.removeItem(KEY);
-    status("Dados de autorização inválidos. Inicie novamente.");
-    return;
-  }
+    setStatus("Finalizando autenticação...");
 
-  if (!returnedState || returnedState !== saved.state) {
-    sessionStorage.removeItem(KEY);
-    status("Falha de segurança: o state não corresponde à sessão original.");
-    return;
-  }
-
-  if (Date.now()-saved.createdAt > 600000) {
-    sessionStorage.removeItem(KEY);
-    status("A autorização expirou. Inicie novamente.");
-    return;
-  }
-
-  $("clientId").value = saved.clientId;
-  status("Autorização recebida. Validando conexão...");
-
-  try {
     const body = new URLSearchParams({
-      client_id:saved.clientId,
-      grant_type:"authorization_code",
-      code,
-      redirect_uri:REDIRECT_URI,
-      code_verifier:saved.verifier
+      grant_type: "authorization_code",
+      code: code,
+      redirect_uri: REDIRECT_URI,
+      client_id: clientId,
+      code_verifier: verifier
     });
 
-    const response = await fetch(TOKEN_URL,{
-      method:"POST",
-      headers:{"Content-Type":"application/x-www-form-urlencoded"},
-      body
+    const response = await fetch(TOKEN_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type":
+          "application/x-www-form-urlencoded"
+      },
+      body: body.toString()
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error_description || data.error || "Falha na autenticação");
+      throw new Error(
+        data.error_description ||
+        data.error ||
+        "HTTP " + response.status
+      );
     }
 
-    sessionStorage.setItem(TOKEN_KEY,JSON.stringify({
-      accessToken:data.access_token,
-      expiresAt:Date.now()+data.expires_in*1000
-    }));
+    sessionStorage.setItem(
+      TOKEN_KEY,
+      data.access_token
+    );
 
-    sessionStorage.removeItem(KEY);
-    await loadSpotifyData();
-  } catch(error) {
-    sessionStorage.removeItem(KEY);
-    status("Não foi possível conectar: "+error.message);
+    sessionStorage.removeItem(VERIFIER_KEY);
+
+    history.replaceState(
+      {},
+      "",
+      "/"
+    );
+
+    await loadProfile();
+
+  } catch (error) {
+    setStatus(
+      "Falha na autenticação: " + error.message
+    );
   }
 }
 
-async function spotifyGet(path,token) {
-  const response = await fetch("https://api.spotify.com/v1"+path,{
-    headers:{Authorization:"Bearer "+token}
-  });
-  if (!response.ok) {
-    throw new Error("Spotify API retornou HTTP "+response.status);
+async function spotifyRequest(path) {
+  const token =
+    sessionStorage.getItem(TOKEN_KEY);
+
+  if (!token) {
+    throw new Error("Conta não conectada.");
   }
+
+  const response = await fetch(
+    API_URL + path,
+    {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    }
+  );
+
+  if (!response.ok) {
+    let detail = "";
+
+    try {
+      const data = await response.json();
+      detail = data.error?.message || "";
+    } catch (_) {}
+
+    throw new Error(
+      "Spotify API HTTP " +
+      response.status +
+      (detail ? ": " + detail : "")
+    );
+  }
+
   return response.json();
 }
 
-async function loadSpotifyData() {
-  const raw = sessionStorage.getItem(TOKEN_KEY);
-  if (!raw) return;
+async function loadProfile() {
+  try {
+    setStatus("Carregando perfil...");
+
+    const profile =
+      await spotifyRequest("/me");
+
+    const container = $("profile");
+    container.replaceChildren();
+
+    if (
+      profile.images &&
+      profile.images.length
+    ) {
+      const img = document.createElement("img");
+      img.src = profile.images[0].url;
+      img.alt = "Foto do perfil Spotify";
+      container.appendChild(img);
+    }
+
+    const name = document.createElement("h3");
+    name.textContent =
+      profile.display_name ||
+      "Usuário Spotify";
+
+    container.appendChild(name);
+
+    const country = document.createElement("p");
+    country.textContent =
+      "País: " + (profile.country || "Não informado");
+
+    container.appendChild(country);
+
+    const plan = document.createElement("p");
+    plan.textContent =
+      "Plano: " + (profile.product || "Não informado");
+
+    container.appendChild(plan);
+
+    setStatus("Spotify conectado com sucesso!");
+
+    $("playlists").textContent =
+      "Perfil carregado. A visualização de playlists " +
+      "será adicionada após confirmar as permissões " +
+      "disponíveis para o aplicativo.";
+
+  } catch (error) {
+    setStatus(
+      "Erro ao carregar dados: " + error.message
+    );
+  }
+}
+
+function disconnectSpotify() {
+  sessionStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(VERIFIER_KEY);
+  sessionStorage.removeItem(STATE_KEY);
+
+  $("profile").replaceChildren();
+  $("playlists").replaceChildren();
+
+  setStatus(
+    "Sessão local encerrada. " +
+    "A autorização da conta no Spotify " +
+    "não foi revogada."
+  );
+}
+
+function runDiagnostics() {
+  let storage = "Indisponível";
 
   try {
-    const tokenData = JSON.parse(raw);
-    if (Date.now() >= tokenData.expiresAt) {
-      sessionStorage.removeItem(TOKEN_KEY);
-      status("Sua sessão expirou. Conecte novamente.");
-      return;
+    localStorage.setItem("m8_test", "ok");
+
+    if (
+      localStorage.getItem("m8_test") === "ok"
+    ) {
+      storage = "Disponível";
     }
 
-    const token = tokenData.accessToken;
-    const me = await spotifyGet("/me",token);
-    const playlists = await spotifyGet("/me/playlists?limit=20",token);
+    localStorage.removeItem("m8_test");
+  } catch (_) {}
 
-    $("profile").replaceChildren();
-    const title = document.createElement("h2");
-    title.textContent = "Conectado: "+(me.display_name || me.id);
-    $("profile").appendChild(title);
+  $("results").textContent = [
+    "JavaScript: funcionando",
+    "Armazenamento local: " + storage,
+    "Conexão: " +
+      (navigator.onLine ? "online" : "offline"),
+    "Service Worker: " +
+      ("serviceWorker" in navigator
+        ? "suportado"
+        : "não suportado"),
+    "Tela: " +
+      innerWidth + " × " + innerHeight
+  ].join("\n");
+}
 
-    $("playlists").replaceChildren();
-    const heading = document.createElement("h2");
-    heading.textContent = "Suas playlists";
-    $("playlists").appendChild(heading);
+$("connect").addEventListener(
+  "click",
+  connectSpotify
+);
 
-    if (!playlists.items || !playlists.items.length) {
-      const empty = document.createElement("p");
-      empty.textContent = "Nenhuma playlist encontrada.";
-      $("playlists").appendChild(empty);
-    }
+$("logout").addEventListener(
+  "click",
+  disconnectSpotify
+);
 
-    for (const item of (playlists.items || [])) {
-      if (!item) continue;
-      const div = document.createElement("div");
-      div.className = "playlist";
-      const link = document.createElement("a");
-      link.textContent = item.name || "Playlist";
-      if (item.external_urls && item.external_urls.spotify) {
-        link.href = item.external_urls.spotify;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-      }
-      div.appendChild(link);
-      $("playlists").appendChild(div);
+$("test").addEventListener(
+  "click",
+  runDiagnostics
+);
+
+const savedClientId =
+  sessionStorage.getItem(CLIENT_KEY);
+
+if (savedClientId) {
+  $("clientId").value = savedClientId;
+}
+
+if (
+  window.location.pathname === "/callback"
+) {
+  handleCallback();
+} else if (
+  sessionStorage.getItem(TOKEN_KEY)
+) {
+  loadProfile();
+}
+</script>
+</body>
+</html>
+"playlists").appendChild(div);
     }
 
     $("disconnect").hidden = false;
